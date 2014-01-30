@@ -1,0 +1,29 @@
+{mode, max}.
+
+{duration, 5}.
+{concurrent, 100}.
+
+{driver, basho_bench_driver_rets}.
+
+{report_interval, 10}.
+
+{code_paths, [
+              "/usr/er/libdist"
+              ]}.
+
+{key_generator, {uniform_int, 99}}.
+
+{value_generator, {fixed_bin, 2048}}.
+
+{rets_hosts, [ HOSTS ]}.
+
+{rets_mynode, ['rets_bench@10.1.1.2', longnames]}.
+
+{rets_spec,
+   {rptree, rets, [ {min_no_slots, 1000} ], 
+      SPEC
+   }
+}.
+
+
+{operations, [{OP, 1}]}.
