@@ -7,8 +7,8 @@ then
 fi
 
 dir=$@
-resdir="$(basename $dir)-$(date +"%y_%m_%d-%H:%M")"
-mkdir $resdir
+resdir=results/"$(basename $dir)-$(date +"%y_%m_%d-%H:%M:%S")"
+mkdir -p $resdir
 
 for expfile in `ls $dir/*.config`
 do
@@ -17,5 +17,7 @@ do
 
    exp=$(basename "$expfile")
    exp="${exp%.*}"
-   mv `readlink /usr/er/basho_bench/tests/current` $resdir
+   mv `readlink tests/current` $resdir/$exp
 done
+
+rm -r tests    # basho_bench dumps a tests dir in local dir
